@@ -1,3 +1,11 @@
+<?php
+
+require_once "database.php";
+$query = "SELECT * FROM users";
+$result = mysqli_query($conn, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +23,21 @@
             margin: 0;
         }
         img{
-            padding: 40px;
-            display: block;
-            margin: auto;
+            margin: 20px 0px 25px 25px;
+            width: 150px; 
+            height: 150px;
+            border-radius: 50%; 
+            border: 3px solid #fff; 
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        h3{
+            font-size: 16px;
+            margin-left: 5%;  
+              
         }
         
         /* Sidebar Styles */
@@ -74,15 +94,14 @@
     </style>
 </head>
 <body>
-
 <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <h2>Dashboard</h2>
-            <img src="images/avatar.jpg" alt="Profile Picture">
+            <img src="images/avatar.png" alt="Profile Picture">
+            <h3>Hello Toring, Lorenz Lord !!</h3>
             <ul>
                 <li><a href="profile.php">👤 Profile</a></li>
-                <li><a href="edit.php">✏️ Edit</a></li>
                 <li><a href="announcements.php">📢 View Announcements</a></li>
                 <li><a href="sessions.php">⏳ View Remaining Session</a></li>
                 <li><a href="rules.php">📜 Sit-in Rules</a></li>
@@ -91,11 +110,10 @@
                 <li><a href="reservation.php">📅 Reservation</a></li>
                 <li><a href="login.php">🚪 Log-out</a></li>
             </ul>
-        </aside>
-
+        </aside>   
     <!-- Main Content -->
     <main class="content">
-            <h1>Welcome to Sit-in Monitoring System</h1>
+            <h1>Welcome to CCS Sit-in Monitoring System</h1>
             <div class="dashboard-stats">
 </body>
 </html>

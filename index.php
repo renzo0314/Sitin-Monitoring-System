@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "database.php";
 $query = "SELECT * FROM users";
@@ -16,7 +17,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="style.css">
     <title>User dashboard</title>
     <style>
-         body {
+        body {
             font-family: Arial, sans-serif;
             display: flex;
             background-color: #f4f4f4;
@@ -101,14 +102,13 @@ $result = mysqli_query($conn, $query);
             <img src="images/avatar.png" alt="Profile Picture">
             <h3>Hello Toring, Lorenz Lord !!</h3>
             <ul>
-                <li><a href="profile.php">👤 Profile</a></li>
-                <li><a href="announcements.php">📢 View Announcements</a></li>
-                <li><a href="sessions.php">⏳ View Remaining Session</a></li>
-                <li><a href="rules.php">📜 Sit-in Rules</a></li>
-                <li><a href="lab_rules.php">🧑‍💻 Lab Rules & Regulations</a></li>
-                <li><a href="history.php">📂 History</a></li>
-                <li><a href="reservation.php">📅 Reservation</a></li>
-                <li><a href="login.php">🚪 Log-out</a></li>
+                <li><a href="profile.php"> Profile</a></li>
+                <li><a href="announcements.php"> Announcements & Rules</a></li>
+                <li><a href="sessions.php"> View Remaining Session</a></li>
+                <li><a href="lab_rules.php">Lab Rules & Regulations</a></li>
+                <li><a href="history.php"> History</a></li>
+                <li><a href="reservation.php"> Reservation</a></li>
+                <li><a href="login.php"> Log-out</a></li>
             </ul>
         </aside>   
     <!-- Main Content -->

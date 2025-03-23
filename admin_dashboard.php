@@ -24,8 +24,9 @@ if ($result) {
     <meta http-equiv = "X-UA-Compatibla "content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>User dashboard</title>
+    <title>Admin dashboard</title>
     <style>
          body {
             font-family: Arial, sans-serif;
@@ -108,6 +109,24 @@ if ($result) {
         .h1{
             margin-left: 50px;
         }
+
+        .search-bar{
+            width: 100%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 5px 15px;
+            background-color: #fff;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -118,16 +137,58 @@ if ($result) {
             <img src="images\avatar.png" alt="Profile Picture">
             <h3>Hello, Admin ! </h3>
             <ul>
-                <li><a href="announcements_Admin.php"> Announcements</a></li>
-                <li><a href="sessions.php"> View Remaining Session</a></li>
-                <li><a href="history.php"> History</a></li>
-                <li><a href="reservation.php"> Reservation</a></li>
+                <li><a href="announcements_Admin.php"> View Sit-in Records</a></li>
+                <li><a href="sessions.php"> Sit-in Reports</a></li>
+                <li><a href="history.php"> Feedback</a></li>
                 <li><a href="login.php"> Log-out</a></li>
             </ul>
         </aside>   
     <!-- Main Content -->
-    <main class="content">
-        <h1>Welcome Admin</h1>
-        <div class="dashboard-stats">
+    <div class="container mt-4">
+    <div class="row">
+    <input type="text" placeholder="Search Students.." name="search" class="search-bar">
+        <!-- Statistics Panel -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Statistics</div>
+                <div class="card-body">
+                    <p><strong>Students Registered:</strong> 103</p>
+                    <p><strong>Currently Sit-In:</strong> 0</p>
+                    <p><strong>Total Sit-In:</strong> 73</p>
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Announcements Panel -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Announcement</div>
+                <div class="card-body">
+                    <textarea class="form-control" placeholder="New Announcement"></textarea>
+                    <button class="btn btn-success mt-2">Submit</button>
+                    <h5 class="mt-3">Posted Announcements</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>CCS Admin | 2025-Feb-25</strong><br>UC did it again.</li>
+                        <li class="list-group-item"><strong>CCS Admin | 2025-Feb-03</strong><br>The College of Computer Studies will open registration of students for the Sit-in privilege starting tomorrow.</li>
+                        <li class="list-group-item"><strong>CCS Admin | 2024-May-08</strong><br>Important Announcement! We are excited to announce the launch of our new website!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+const ctx = document.getElementById('pieChart').getContext('2d');
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['C#', 'Java', 'ASP.Net', 'PHP'],
+        datasets: [{
+            data: [40, 30, 15, 15],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0']
+        }]
+    }
+});
+</script>
 </body>
 </html>
